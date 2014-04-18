@@ -17,9 +17,7 @@ gerritEmitter.on('patchsetCreated', function(eventData) {
 ## Documentation
 
 The `GerritEventEmitter` class inherited from [EventEmitter2](https://github.com/hij1nx/EventEmitter2).
-So you can use EventEmitter2 methods basically.
-
-And, available event names here:
+So you can use EventEmitter2 methods basically. And, available event names here:
 
 * `patchsetCreated`
 * `changeAbandoned`
