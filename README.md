@@ -9,7 +9,7 @@ Install the module with: `npm install gerrit-event-emitter`
 var GerritEventEmitter = require('gerrit-event-emitter').GerritEventEmitter,
     gerritEventEmitter = new GerritEventEmitter('gerrit.example.com', 29418);
 
-gerritEmitter.on('patchsetCreated', function(eventData) {
+gerritEventEmitter.on('patchsetCreated', function(eventData) {
   // do something.
 });
 ```
@@ -19,7 +19,7 @@ gerritEmitter.on('patchsetCreated', function(eventData) {
 The `GerritEventEmitter` class inherited from [EventEmitter2](https://github.com/hij1nx/EventEmitter2).
 So you can use EventEmitter2 methods basically.
 
-### Available event names:
+### Available event names
 
 * `patchsetCreated`
 * `changeAbandoned`
