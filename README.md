@@ -35,6 +35,7 @@ So you can use EventEmitter2 methods basically.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+ * 2014-04-19   v0.1.3   Add start/stop methods.
  * 2014-04-19   v0.1.2   Fix dependencies.
  * 2014-04-18   v0.1.1   First release.
 
