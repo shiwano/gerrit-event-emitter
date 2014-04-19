@@ -7,11 +7,46 @@ var GerritEventEmitter = require('../lib/gerrit-event-emitter').GerritEventEmitt
 
 describe('GerritEventEmitter', function() {
   beforeEach(function() {
-    this.subject = new GerritEventEmitter('gerrit.example.com', 29418);
+    this.subject = new GerritEventEmitter('gerrit.example.com', 29418, 'stream-events');
+  });
+
+  afterEach(function() {
+    this.subject.stop();
   });
 
   it('should inherit from EventEmitter2', function() {
     expect(this.subject).to.be.an.instanceof(EventEmitter2);
+  });
+
+  it('should set host property', function() {
+    expect(this.subject.host).to.be.equal('gerrit.example.com');
+  });
+
+  it('should set port property', function() {
+    expect(this.subject.port).to.be.equal(29418);
+  });
+
+  it('should set gerritCommand property', function() {
+    expect(this.subject.gerritCommand).to.be.equal('stream-events');
+  });
+
+  describe('#start()', function() {
+    it('should start gerrit stream', function() {
+      expect(this.subject.isStarted()).not.to.be.ok;
+      this.subject.start();
+      expect(this.subject.isStarted()).to.be.ok;
+    });
+  });
+
+  describe('#stop()', function() {
+    beforeEach(function() {
+      this.subject.start();
+    });
+
+    it('should stop gerrit stream', function() {
+      this.subject.stop();
+      expect(this.subject.isStarted()).not.to.be.ok;
+    });
   });
 
   describe('#onStreamWrite(output)', function() {
