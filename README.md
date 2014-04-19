@@ -12,6 +12,7 @@ var GerritEventEmitter = require('gerrit-event-emitter').GerritEventEmitter,
 gerritEventEmitter.on('patchsetCreated', function(eventData) {
   // do something.
 });
+gerritEventEmitter.start() // start gerrit-stream process.
 ```
 
 ## Documentation
