@@ -8,7 +8,7 @@ var GerritEventEmitter = require('../lib/gerrit-event-emitter').GerritEventEmitt
 
 describe('GerritEventEmitter', function() {
   beforeEach(function() {
-    this.subject = new GerritEventEmitter('gerrit.example.com', 29418, true);
+    this.subject = new GerritEventEmitter('gerrit.example.com', 29418, false);
   });
 
   afterEach(function() {
@@ -28,7 +28,7 @@ describe('GerritEventEmitter', function() {
   });
 
   it('should set enabledAutoRestart property', function() {
-    expect(this.subject.enabledAutoRestart).to.be.ok;
+    expect(this.subject.enabledAutoRestart).not.to.be.ok;
   });
 
   describe('#start()', function() {
@@ -58,6 +58,14 @@ describe('GerritEventEmitter', function() {
       });
       this.subject.onStreamWrite('{"type":"comment-added","id":19234}\n');
     });
+
+    it('should emit gerritStreamWrite event', function(done) {
+      this.subject.on('gerritStreamWrite', function(output) {
+        expect(output).to.be.equal('{"type":"comment-added","id":19234}\n');
+        done();
+      });
+      this.subject.onStreamWrite('{"type":"comment-added","id":19234}\n');
+    });
   });
 
   describe('#onStreamEnd(output)', function() {
@@ -67,24 +75,32 @@ describe('GerritEventEmitter', function() {
     });
 
     it('should receive #stop', function() {
-      this.subject.onStreamEnd();
+      this.subject.onStreamEnd('end');
       expect(this.subject.stop.called).to.be.ok;
     });
 
+    it('should emit gerritStreamEnd event', function(done) {
+      this.subject.on('gerritStreamEnd', function(output) {
+        expect(output).to.be.equal('end');
+        done();
+      });
+      this.subject.onStreamEnd('end');
+    });
+
     context('enabledAutoRestart is true', function() {
+      beforeEach(function() {
+        this.subject.enabledAutoRestart = true;
+      });
+
       it('should restart automatically', function() {
-        this.subject.onStreamEnd();
+        this.subject.onStreamEnd('end');
         expect(this.subject.start.called).to.be.ok;
       });
     });
 
     context('enabledAutoRestart is false', function() {
-      beforeEach(function() {
-        this.subject.enabledAutoRestart = false;
-      });
-
       it('should not restart automatically', function() {
-        this.subject.onStreamEnd();
+        this.subject.onStreamEnd('end');
         expect(this.subject.start.called).not.to.be.ok;
       });
     });
