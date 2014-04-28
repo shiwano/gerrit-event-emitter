@@ -2,6 +2,7 @@
 
 var GerritEventEmitter = require('../lib/gerrit-event-emitter').GerritEventEmitter,
     EventEmitter2 = require('eventemitter2').EventEmitter2,
+    sinon = require('sinon'),
     chai = require('chai'),
     expect = chai.expect;
 
@@ -56,6 +57,14 @@ describe('GerritEventEmitter', function() {
         done();
       });
       this.subject.onStreamWrite('{"type":"comment-added","id":19234}\n');
+    });
+  });
+
+  describe('#onStreamEnd(output)', function() {
+    it('should restart automatically', function() {
+      sinon.spy(this.subject, 'start');
+      this.subject.onStreamEnd();
+      expect(this.subject.start.called).to.be.ok;
     });
   });
 
