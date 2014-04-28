@@ -20,7 +20,13 @@ gerritEventEmitter.start() // start gerrit-stream process.
 The `GerritEventEmitter` class inherited from [EventEmitter2](https://github.com/hij1nx/EventEmitter2).
 So you can use EventEmitter2 methods basically.
 
-### Available event names
+### Constructor
+
+```javascript
+new GerritEventEmitter(host, port, [, enabledAutoRestart ]);
+```
+
+### Available events
 
 * `patchsetCreated`
 * `changeAbandoned`

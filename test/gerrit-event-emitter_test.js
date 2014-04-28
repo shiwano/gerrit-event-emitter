@@ -8,7 +8,7 @@ var GerritEventEmitter = require('../lib/gerrit-event-emitter').GerritEventEmitt
 
 describe('GerritEventEmitter', function() {
   beforeEach(function() {
-    this.subject = new GerritEventEmitter('gerrit.example.com', 29418, 'stream-events');
+    this.subject = new GerritEventEmitter('gerrit.example.com', 29418, true);
   });
 
   afterEach(function() {
@@ -27,8 +27,8 @@ describe('GerritEventEmitter', function() {
     expect(this.subject.port).to.be.equal(29418);
   });
 
-  it('should set gerritCommand property', function() {
-    expect(this.subject.gerritCommand).to.be.equal('stream-events');
+  it('should set enabledAutoRestart property', function() {
+    expect(this.subject.enabledAutoRestart).to.be.ok;
   });
 
   describe('#start()', function() {
@@ -61,10 +61,32 @@ describe('GerritEventEmitter', function() {
   });
 
   describe('#onStreamEnd(output)', function() {
-    it('should restart automatically', function() {
+    beforeEach(function() {
       sinon.spy(this.subject, 'start');
+      sinon.spy(this.subject, 'stop');
+    });
+
+    it('should receive #stop', function() {
       this.subject.onStreamEnd();
-      expect(this.subject.start.called).to.be.ok;
+      expect(this.subject.stop.called).to.be.ok;
+    });
+
+    context('enabledAutoRestart is true', function() {
+      it('should restart automatically', function() {
+        this.subject.onStreamEnd();
+        expect(this.subject.start.called).to.be.ok;
+      });
+    });
+
+    context('enabledAutoRestart is false', function() {
+      beforeEach(function() {
+        this.subject.enabledAutoRestart = false;
+      });
+
+      it('should not restart automatically', function() {
+        this.subject.onStreamEnd();
+        expect(this.subject.start.called).not.to.be.ok;
+      });
     });
   });
 
