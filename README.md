@@ -1,6 +1,6 @@
 # gerrit-event-emitter [![Build Status](https://secure.travis-ci.org/shiwano/gerrit-event-emitter.png?branch=master)](http://travis-ci.org/shiwano/gerrit-event-emitter)
 
-A thin wrapper of [gerrit-stream](https://github.com/fivetanley/gerrit-stream) which inherits from [EventEmitter2](https://github.com/hij1nx/EventEmitter2).
+A thin wrapper of [gerrit-stream](https://github.com/fivetanley/gerrit-stream) for Node.js.
 
 ## Getting Started
 Install the module with: `npm install gerrit-event-emitter`
