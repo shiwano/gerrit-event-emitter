@@ -1,4 +1,4 @@
-# gerrit-event-emitter [![Build Status](https://secure.travis-ci.org/shiwano/gerrit-event-emitter.png?branch=master)](http://travis-ci.org/shiwano/gerrit-event-emitter)
+# gerrit-event-emitter [![Build Status](https://secure.travis-ci.org/shiwano/gerrit-event-emitter.png?branch=master)](http://travis-ci.org/shiwano/gerrit-event-emitter) [![npm version](https://badge.fury.io/js/gerrit-event-emitter.svg)](http://badge.fury.io/js/gerrit-event-emitter)
 
 A thin wrapper of [gerrit-stream](https://github.com/fivetanley/gerrit-stream) for Node.js.
 
@@ -43,7 +43,7 @@ new GerritEventEmitter(host, port, [, enabledAutoRestart ]);
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
- * 2019-03-09   v0.2.0   Fix the failure to parse a JSON string sometimes.
+ * 2019-03-09   v0.2.0   Fix the failure to parse a JSON string sometimes (Thanks: @josephschmitt).
  * 2014-07-29   v0.1.5   Fix process stop bug
  * 2014-04-28   v0.1.4   Support auto restart and gerrit-stream events.
  * 2014-04-19   v0.1.3   Add start/stop methods.
