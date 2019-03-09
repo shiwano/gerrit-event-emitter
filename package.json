@@ -1,7 +1,7 @@
 {
   "name": "gerrit-event-emitter",
   "description": "A thin wrapper of gerrit-stream.",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "homepage": "https://github.com/shiwano/gerrit-event-emitter",
   "author": {
     "name": "Shogo Iwano",
