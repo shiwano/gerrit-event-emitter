@@ -3,6 +3,3 @@ node_js:
   - 6
   - 8
   - 10
-before_script:
-  - npm cache clean -g
-  - npm update -g npm
