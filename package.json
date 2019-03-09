@@ -28,20 +28,20 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt": "~0.4.4",
-    "chai": "~1.9.1",
-    "sinon": "~1.9.1",
-    "grunt-mocha-cli": "~1.8.0"
+    "grunt-contrib-jshint": "~2.0.0",
+    "grunt-contrib-nodeunit": "~2.0.0",
+    "grunt-contrib-watch": "~1.1.0",
+    "grunt": "~1.0.3",
+    "chai": "~4.2.0",
+    "sinon": "~7.2.7",
+    "grunt-mocha-cli": "~4.0.0"
   },
   "keywords": [
     "gerrit"
   ],
   "dependencies": {
-    "eventemitter2": "~0.4.13",
-    "inflection": "~1.3.5",
+    "eventemitter2": "~5.0.1",
+    "inflection": "~1.12.0",
     "gerrit-stream": "0.0.1"
   }
 }
