@@ -1,7 +1,7 @@
 {
   "name": "gerrit-event-emitter",
   "description": "A thin wrapper of gerrit-stream.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/shiwano/gerrit-event-emitter",
   "author": {
     "name": "Shogo Iwano",
@@ -25,12 +25,11 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "node_modules/grunt-cli/bin/grunt test"
+    "test": "$(npm bin)/grunt test"
   },
   "devDependencies": {
     "chai": "~4.2.0",
     "grunt": "~1.0.3",
-    "grunt-cli": "^1.3.2",
     "grunt-contrib-jshint": "~2.0.0",
     "grunt-contrib-nodeunit": "~2.0.0",
     "grunt-contrib-watch": "~1.1.0",
