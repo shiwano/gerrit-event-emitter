@@ -17,7 +17,7 @@
   "license": "MIT",
   "main": "lib/gerrit-event-emitter",
   "engines": {
-    "node": ">= 6"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "$(npm bin)/grunt test"
